@@ -8,7 +8,7 @@ interface MarqueeScrollProps {
   className?: string
 }
 
-const MarqueeScroll = ({ children, speed = 90, className = '' }: MarqueeScrollProps) => {
+const MarqueeScroll = ({ children, speed = 40, className = '' }: MarqueeScrollProps) => {
   const scrollRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
 

@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const gradientColors = [
-  'bg-[#FFF5C2]',  // Light yellow
+  'bg-[#FFF5C2]',  // Light yellow. idk why this doesn't work with hsla. but works with hex
   'bg-[hsla(51,100%,50%,1)]',  // Yellow
   'bg-[hsla(41,100%,50%,1)]',  // Light orange
   'bg-[hsla(30,100%,51%,1)]',  // Orange

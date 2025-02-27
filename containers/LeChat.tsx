@@ -61,7 +61,7 @@ const LeChat = () => {
   return (
     <div className="bg-[#FDF6EC] py-24">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center gap-4 w-full bg-[#f8efc0] p-4 rounded-lg mb-24">
+        <div className="flex items-center gap-4 w-full bg-[#f8efc0] rounded-lg mb-24">
           <LogoWithCatFace />
           <h2 className="text-lg text-black">Le Chat: Your AI assistant for life and work.</h2>
           <div className="flex gap-4 ml-auto">
@@ -103,14 +103,11 @@ const LeChat = () => {
 
         <div className="flex flex-col lg:flex-row gap-24">
           <div className="flex-1">
-            <div className="sticky top-1/2 -translate-y-1/2 max-w-[400px] mt-4">
+            <div className="sticky top-1/2 -translate-y-1/2 max-w-[400px] mt-30">
               <h2 className="text-5xl font-light mb-8 text-black">
                 Your AI future belongs in your hands. 
                 <img src="/flag.svg" alt="Flag" className="inline-block ml-2 w-[27px] h-[31px]" />
               </h2>
-              <FadeInSection>
-                <SearchInput />
-              </FadeInSection>
             </div>
           </div>
           <div className="flex-1 space-y-16">
@@ -132,6 +129,12 @@ const LeChat = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 w-full max-w-2xl px-6">
+          <FadeInSection>
+            <SearchInput />
+          </FadeInSection>
         </div>
       </div>
     </div>
