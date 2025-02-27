@@ -4,30 +4,47 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import Button from '@/components/Button'
 
-const GetWork = () => {
-  const [isInView, setIsInView] = useState(false)
+interface GetWorkProps {
+  title: string
+  description: string
+  buttonText: string
+  imageSrc: string
+  imageAlt?: string
+  imageLabel?: string
+}
+
+const GetWork = ({ 
+  title, 
+  description, 
+  buttonText, 
+  imageSrc, 
+  imageAlt = "Example", 
+  imageLabel = "Talk to Le Chat" 
+}: GetWorkProps) => {
+  const [scrollProgress, setScrollProgress] = useState(0)
   const sectionRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsInView(true)
-          }
-        })
-      },
-      {
-        threshold: 0.3, // Trigger when 30% of the section is visible
-      }
-    )
+    const handleScroll = () => {
+      if (!sectionRef.current) return
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
+      const rect = sectionRef.current.getBoundingClientRect()
+      const windowHeight = window.innerHeight
+      
+      let progress = 1 - (rect.bottom - windowHeight) / (rect.height)
+      progress = Math.max(0, Math.min(1, progress))
+      
+      setScrollProgress(progress)
     }
 
-    return () => observer.disconnect()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const scale = 0.8 + (scrollProgress * 0.2)
+  const contentOpacity = 0.5 + (scrollProgress * 0.5)
 
   return (
     <div 
@@ -42,52 +59,48 @@ const GetWork = () => {
       }}
     >
       <div 
-        className={`
-          max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center
-          transition-all duration-1000 transform
-          ${isInView ? 'opacity-100 translate-y-0' : 'opacity-50 translate-y-20 scale-95'}
-        `}
+        className="relative max-w-7xl mx-auto px-6 py-24"
+        style={{
+          transform: `scale(${scale})`,
+          transition: 'transform 0.3s ease-out'
+        }}
       >
-        {/* Left Column */}
-        <div>
-          <h2 className={`
-            text-6xl font-light mb-8 transition-all duration-1000 delay-200
-            ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-          `}>
-            Get work done.
-          </h2>
-          <p className={`
-            text-2xl text-gray-700 mb-12 transition-all duration-1000 delay-400
-            ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-          `}>
-            Your personalized multilingual AI assistant, with web search, uploads, and data connectors.
-          </p>
-          <Button 
-            variant="primary"
-            className={`
-              !bg-gray-900 !hover:bg-gray-800 transition-all duration-1000 delay-600
-              ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-            `}
-          >
-            Discover le Chat 
-            <span className="ml-2">→</span>
-          </Button>
-        </div>
+        <div 
+          className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+          style={{
+            opacity: contentOpacity,
+            transition: 'opacity 0.0s ease-out'
+          }}
+        >
+          {/* Left Column */}
+          <div>
+            <h2 className="text-6xl font-light mb-8">
+              {title}
+            </h2>
+            <p className="text-2xl text-gray-700 mb-12">
+              {description}
+            </p>
+            <Button 
+              variant="primary"
+              className="!bg-gray-900 !hover:bg-gray-800"
+            >
+              {buttonText}
+              <span className="ml-2">→</span>
+            </Button>
+          </div>
 
-        {/* Right Column - Chat Example */}
-        <div className={`
-          relative transition-all duration-1000 delay-800
-          ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-20'}
-        `}>
-          <Image
-            src="/example.webp"
-            alt="Chat Example"
-            width={600}
-            height={400}
-            className="rounded-lg shadow-2xl"
-          />
-          <div className="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
-            Talk to Le Chat
+          {/* Right Column - Example Image */}
+          <div className="relative">
+            <Image
+              src={imageSrc}
+              alt={imageAlt}
+              width={600}
+              height={400}
+              className="rounded-lg shadow-2xl"
+            />
+            <div className="absolute bottom-4 right-4 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm">
+              {imageLabel}
+            </div>
           </div>
         </div>
       </div>
