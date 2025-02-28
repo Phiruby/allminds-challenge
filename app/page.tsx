@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import Image from "next/image";
 import Navbar from '@/containers/Navbar'
 import Hero from '@/containers/Hero'
 import LeChat from '@/containers/LeChat'

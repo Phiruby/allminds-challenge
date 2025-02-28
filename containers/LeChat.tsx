@@ -4,7 +4,7 @@ import FadeInSection from '@/components/FadeInSection'
 import SearchInput from '@/components/SearchInput'
 
 const companies = [
-  { name: 'Belfius', logo: '/companies/belfius.webp' },
+  { name: 'Belfius', logo: '/companies/Belfius.webp' },
   { name: 'BNP Paribas', logo: '/companies/bnp.webp' },
   { name: 'Hugging Face', logo: '/companies/huggingface.webp' },
   { name: 'MongoDB', logo: '/companies/mongo.webp' },
