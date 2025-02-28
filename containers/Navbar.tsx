@@ -33,6 +33,14 @@ const NavBarButtons = ({text, isLight} : {text: string, isLight: boolean}) => {
   )
 }
 
+const MenuIcon = () => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 12H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M3 6H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+    <path d="M3 18H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+)
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isPastHero, setIsPastHero] = useState(false)
@@ -53,7 +61,7 @@ const Navbar = () => {
   return (
     <nav 
       className={`
-        fixed top-0 left-0 right-0 z-50 px-6 py-4 transition-all duration-300
+        fixed top-0 left-0 right-0 z-50 px-4 sm:px-6 py-2 sm:py-4 transition-all duration-300
         before:absolute before:inset-0 before:transition-all before:ease-in-out before:duration-500 before:-z-10
         ${isPastHero 
           ? 'before:bg-[#FDF6EC] before:translate-y-0' 
@@ -62,23 +70,23 @@ const Navbar = () => {
       `}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className={`font-bold text-2xl transition-all duration-300 ${isPastHero ? 'text-black' : 'text-white'}`}>
+        <div className={`font-bold text-xl sm:text-2xl transition-all duration-300 ${isPastHero ? 'text-black' : 'text-white'}`}>
           <Image
             src={isPastHero ? "/coloredcatface.svg" : "/catface.svg"}
             alt="Cat Face"
-            width={48}
-            height={48}
-            className="inline-block mr-2"
+            width={36}
+            height={36}
+            className="inline-block mr-2 sm:w-12 sm:h-12"
           />
         </div>
         
-        <div className="hidden md:flex items-center space-x-8">
+        <div className="hidden lg:flex items-center space-x-8">
           {['Products', 'Solutions', 'Research', 'Resources', 'Company'].map((item) => (
             <a 
               key={item}
               href={`#${item.toLowerCase()}`} 
               className={`
-                transition-colors
+                text-base transition-colors
                 ${isPastHero 
                   ? 'text-black hover:text-black/80' 
                   : 'text-white hover:text-white/80'
@@ -90,10 +98,21 @@ const Navbar = () => {
           ))}
         </div>
 
-        <div className="flex items-center space-x-4">
+        <div className="hidden lg:flex items-center space-x-4">
           <NavBarButtons text="Try the API" isLight={!isPastHero} />
           <NavBarButtons text="Talk to sales" isLight={!isPastHero} />
         </div>
+
+        <button 
+          className={`lg:hidden p-2 ${isPastHero ? 'text-black' : 'text-white'}`}
+          aria-label="Menu"
+        >
+          <MenuIcon />
+        </button>
+      </div>
+
+      <div className="md:hidden">
+        {/* Mobile menu content */}
       </div>
     </nav>
   )
