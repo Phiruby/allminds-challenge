@@ -35,9 +35,8 @@ const features = [
 ]
 
 const LogoWithCatFace = () => {
-  // colors values taken from their webpage lol
   return (
-    <div className="relative flex w-full shrink-0 flex-col items-center justify-center md:size-[125px]">
+    <div className="relative flex w-full md:w-[125px] shrink-0 flex-col items-center justify-center">
       <div className="flex flex-col w-full">
         <div className="w-full h-[25px]" style={{ background: 'hsla(51, 100%, 50%, 1)' }}></div>
         <div className="w-full h-[25px]" style={{ background: 'hsla(41, 100%, 50%, 1)' }}></div>
@@ -54,8 +53,8 @@ const LogoWithCatFace = () => {
         />
       </div>
     </div>
-  );
-};
+  )
+}
 
 const LeChat = () => {
   return (
@@ -69,70 +68,83 @@ const LeChat = () => {
         </div>
       </div>
 
-      <div className="bg-[#FDF6EC] py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="flex items-center gap-4 w-full bg-[#f8efc0] rounded-lg mb-24">
-            <LogoWithCatFace />
-            <h2 className="text-lg text-black">Le Chat: Your AI assistant for life and work.</h2>
-            <div className="flex gap-4 ml-auto">
+      <div className="bg-[#FDF6EC] py-12 sm:py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          {/* Le Chat Banner */}
+          <div className="flex flex-col md:flex-row items-center gap-4 w-full bg-[#f8efc0] rounded-lg mb-12 sm:mb-16 md:mb-24 p-4 md:p-0">
+            <div className="flex flex-col md:flex-row items-center gap-4 w-full md:w-auto">
+              <LogoWithCatFace />
+              <h2 className="text-base sm:text-lg text-black text-center md:text-left">
+                Le Chat: Your AI assistant for life and work.
+              </h2>
+            </div>
+            
+            <div className="flex flex-row items-center gap-2 sm:gap-4 mt-4 md:mt-0 md:ml-auto">
               <a href="https://apps.apple.com/app/le-chat" target="_blank" rel="noopener">
                 <Image
                   src="/appstore.svg"
                   alt="Download on App Store"
-                  width={135}
-                  height={40}
+                  width={120}
+                  height={35}
+                  className="w-[100px] sm:w-[120px] md:w-[135px]"
                 />
               </a>
               <a href="https://play.google.com/store/apps/details?id=ai.mistral.lechat" target="_blank" rel="noopener">
                 <Image
                   src="/androidstore.svg"
                   alt="Get it on Google Play"
-                  width={135}
-                  height={40}
+                  width={120}
+                  height={35}
+                  className="w-[100px] sm:w-[120px] md:w-[135px]"
                 />
               </a>
             </div>
-            <div className="relative hidden md:block">
+            <div className="hidden md:block">
               <img src="/catgif.gif" alt="Cat" className="w-24" />
             </div>
           </div>
 
-          <MarqueeScroll className="mb-24">
+          {/* Company Logos */}
+          <MarqueeScroll className="mb-12 sm:mb-16 md:mb-24">
             {companies.map((company) => (
-              <div key={company.name} className="mx-8">
+              <div key={company.name} className="mx-4 sm:mx-6 md:mx-8">
                 <Image
                   src={company.logo}
                   alt={company.name}
                   width={120}
                   height={40}
-                  className="opacity-60 hover:opacity-100 transition-opacity"
+                  className="w-[80px] sm:w-[100px] md:w-[120px] opacity-60 hover:opacity-100 transition-opacity"
                 />
               </div>
             ))}
           </MarqueeScroll>
 
-          <div className="flex flex-col lg:flex-row gap-24">
+          {/* Main Content */}
+          <div className="flex flex-col md:flex-row gap-12 sm:gap-16 md:gap-24">
+            {/* Title Section */}
             <div className="flex-1">
-              <div className="sticky top-1/2 -translate-y-1/2 max-w-[400px] mt-30">
-                <h2 className="text-5xl font-light mb-8 text-black">
+              <div className="md:sticky md:top-1/2 md:-translate-y-1/2 max-w-[400px] mx-auto md:mx-0 text-center md:text-left">
+                <h2 className="text-3xl sm:text-4xl md:text-5xl font-light mb-6 sm:mb-8 text-black">
                   Your AI future belongs in your hands. 
-                  <img src="/flag.svg" alt="Flag" className="inline-block ml-2 w-[27px] h-[31px]" />
+                  <img src="/flag.svg" alt="Flag" className="inline-block ml-2 w-[20px] sm:w-[24px] md:w-[27px] h-auto" />
                 </h2>
               </div>
             </div>
-            <div className="flex-1 space-y-16">
+
+            {/* Features Section */}
+            <div className="flex-1 space-y-8 sm:space-y-12 md:space-y-16">
               {features.map((feature, index) => (
-                <div key={index} className="border-t border-orange-200 pt-8">
-                  <h3 className="text-3xl font-light mb-4 text-black">
+                <div key={index} className="border-t border-orange-200 pt-6 sm:pt-8">
+                  <h3 className="text-xl sm:text-2xl md:text-3xl font-light mb-3 sm:mb-4 text-black">
                     {feature.title}
                   </h3>
-                  <p className="text-md text-gray-900 flex items-start gap-4">
+                  <p className="text-xs sm:text-sm md:text-md text-gray-900 flex items-start gap-2 sm:gap-4">
                     <Image 
                       src="/arrow.svg" 
                       alt="Arrow" 
                       width={24} 
                       height={24}
-                      className="flex-shrink-0 mt-1"
+                      className="flex-shrink-0 mt-1 w-[16px] sm:w-[20px] md:w-[24px] h-auto"
                     />
                     {feature.description}
                   </p>

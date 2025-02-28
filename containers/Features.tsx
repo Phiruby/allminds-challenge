@@ -2,7 +2,7 @@ import GetWork from './GetWork'
 
 const Features = () => {
   return (
-    <div>
+    <div className="space-y-0">
       <GetWork
         title="Get work done."
         description="Your personalized multilingual AI assistant, with web search, uploads, and data connectors."

@@ -23,7 +23,7 @@ const HeroButton = ({ text }: HeroButtonProps) => {
 const Hero = () => {
   return (
     <div 
-      className="relative min-h-[500px] sm:min-h-[600px] md:min-h-[690px] flex items-center justify-center"
+      className="relative min-h-[690px] flex items-center justify-center"
       style={{
         backgroundImage: 'url(/mistralbackground.webp)',
         backgroundSize: 'cover',
