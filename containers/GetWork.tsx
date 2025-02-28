@@ -52,8 +52,8 @@ const GetWork = ({
       className="relative min-h-screen bg-[#FDF6EC] overflow-hidden"
       style={{
         backgroundImage: `
-          linear-gradient(to right, #e5e5e5 1px, transparent 1px),
-          linear-gradient(to bottom, #e5e5e5 1px, transparent 1px)
+          linear-gradient(to right, rgba(255, 140, 0, 0.1) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255, 140, 0, 0.1) 1px, transparent 1px)
         `,
         backgroundSize: '48px 48px'
       }}
@@ -74,7 +74,7 @@ const GetWork = ({
         >
           {/* Left Column */}
           <div>
-            <h2 className="text-6xl font-light mb-8">
+            <h2 className="text-6xl text-black mb-8">
               {title}
             </h2>
             <p className="text-2xl text-gray-700 mb-12">
@@ -82,10 +82,15 @@ const GetWork = ({
             </p>
             <Button 
               variant="primary"
-              className="!bg-gray-900 !hover:bg-gray-800"
+              className="!bg-gray-900 !hover:bg-gray-800 br-0 flex items-center gap-3"
             >
               {buttonText}
-              <span className="ml-2">→</span>
+              <Image
+                src="/orangearrow.svg"
+                alt="Arrow"
+                width={8}
+                height={8}
+              />
             </Button>
           </div>
 

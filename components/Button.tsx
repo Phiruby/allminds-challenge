@@ -13,7 +13,7 @@ const Button = ({
   className = '',
   onClick 
 }: ButtonProps) => {
-  const baseStyles = "px-6 py-3 rounded-lg font-medium transition-colors duration-200"
+  const baseStyles = "px-6 py-3 font-medium transition-colors duration-200"
   const variantStyles = {
     primary: "bg-[#D27548] text-white hover:bg-[#B85F35]",
     secondary: "bg-[#CD8B68] text-white hover:bg-[#B85F35]"

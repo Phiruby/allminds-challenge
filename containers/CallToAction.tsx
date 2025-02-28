@@ -10,6 +10,25 @@ const gradientColors = [
   'bg-[hsla(1,100%,44%,1)]',   // Red
 ]
 
+const ActionButton = ({ href, text }: { href: string; text: string }) => {
+  return (
+    <Link 
+      href={href} 
+      className="group flex items-center text-xl text-black hover:opacity-80 transition-opacity border-b-1 border-black pb-1"
+    >
+      {text}
+      <span className="ml-2 group-hover:translate-x-1 transition-transform">
+        <Image
+          src="/orangearrow.svg"
+          alt="Arrow"
+          width={8}
+          height={8}
+        />
+      </span>
+    </Link>
+  )
+}
+
 const CallToAction = () => {
   return (
     <div className="relative pt-12 pb-48">
@@ -20,25 +39,15 @@ const CallToAction = () => {
         </h2>
 
         <div className="flex gap-12 mb-32">
-          <Link 
-            href="/build" 
-            className="group flex items-center text-xl text-black hover:opacity-80 transition-opacity"
-          >
-            Start building with Mistral AI
-            <span className="ml-2 text-[#D27548] group-hover:translate-x-1 transition-transform">
-              &gt;
-            </span>
-          </Link>
+          <ActionButton 
+            href="/build"
+            text="Start building with Mistral AI"
+          />
 
-          <Link 
-            href="/talk" 
-            className="group flex items-center text-xl text-black hover:opacity-80 transition-opacity"
-          >
-            Talk to an expert
-            <span className="ml-2 text-[#D27548] group-hover:translate-x-1 transition-transform">
-              &gt;
-            </span>
-          </Link>
+          <ActionButton 
+            href="/talk"
+            text="Talk to an expert"
+          />
         </div>
       </div>
 
@@ -70,4 +79,4 @@ const CallToAction = () => {
   )
 }
 
-export default CallToAction 
+export default CallToAction

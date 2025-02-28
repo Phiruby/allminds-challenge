@@ -1,5 +1,5 @@
 import Button from '@/components/Button'
-
+import Image from 'next/image'
 const Careers = () => {
   return (
     <div className="w-full flex justify-center">
@@ -27,10 +27,17 @@ const Careers = () => {
             </p>
             <Button 
               variant="secondary"
-              className="!bg-transparent !border-2 !border-white hover:!bg-white/10"
+              className="!bg-transparent !border-b-2 !border-white hover:!bg-white/10 w-[200px]"
             >
-              View open roles
-              <span className="ml-2">→</span>
+              <span className="flex items-center w-full gap-7">
+                View open roles
+                <Image
+                  src="/orangearrow.svg"
+                  alt="Arrow" 
+                  width={8}
+                  height={8}
+                />
+              </span>
             </Button>
           </div>
         </div>

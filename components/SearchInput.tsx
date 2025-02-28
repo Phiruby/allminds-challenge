@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 
 interface SearchInputProps {
   placeholder?: string
@@ -27,7 +28,12 @@ const SearchInput = ({ placeholder = "Talk to le Chat", onSubmit }: SearchInputP
           className="absolute right-2 top-1/2 -translate-y-1/2 bg-orange-600 p-2 rounded hover:bg-orange-700 transition-colors text-white"
         >
           <span className="sr-only">Submit</span>
-          →
+          <Image
+            src="/whitetailarrow.svg"
+            alt="Submit"
+            width={13}
+            height={8}
+          />
         </button>
       </div>
     </form>

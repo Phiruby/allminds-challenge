@@ -1,5 +1,5 @@
 import Link from 'next/link'
-
+import Image from 'next/image'
 const Announcements = () => {
   return (
     <div className="py-12 w-full">
@@ -13,9 +13,8 @@ const Announcements = () => {
                 className="group inline-flex items-baseline"
               >
                 <h2 className="text-4xl text-black">
-                  Announcing the all new le Chat: Your AI assistant for life and work.
-                  <span className="text-[#D27548] text-2xl group-hover:translate-x-1 transition-transform ml-2">
-                    →
+                  Announcing the all new le Chat: Your AI assistant for life and work. <span className="text-[#D27548] text-2xl group-hover:translate-x-1 transition-transform bg-[#e76c2f] rounded w-[30px] h-[30px] block mt-2 flex items-center justify-center">
+                    <Image src="/whitetailarrow.svg" alt="Arrow" width={8} height={8} />
                   </span>
                 </h2>
               </Link>

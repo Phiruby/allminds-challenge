@@ -59,85 +59,90 @@ const LogoWithCatFace = () => {
 
 const LeChat = () => {
   return (
-    <div className="bg-[#FDF6EC] py-24">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center gap-4 w-full bg-[#f8efc0] rounded-lg mb-24">
-          <LogoWithCatFace />
-          <h2 className="text-lg text-black">Le Chat: Your AI assistant for life and work.</h2>
-          <div className="flex gap-4 ml-auto">
-            <a href="https://apps.apple.com/app/le-chat" target="_blank" rel="noopener">
-              <Image
-                src="/appstore.svg"
-                alt="Download on App Store"
-                width={135}
-                height={40}
-              />
-            </a>
-            <a href="https://play.google.com/store/apps/details?id=ai.mistral.lechat" target="_blank" rel="noopener">
-              <Image
-                src="/androidstore.svg"
-                alt="Get it on Google Play"
-                width={135}
-                height={40}
-              />
-            </a>
-          </div>
-          <div className="relative hidden md:block">
-            <img src="/catgif.gif" alt="Cat" className="w-24" />
-          </div>
-        </div>
-
-        <MarqueeScroll className="mb-24">
-          {companies.map((company) => (
-            <div key={company.name} className="mx-8">
-              <Image
-                src={company.logo}
-                alt={company.name}
-                width={120}
-                height={40}
-                className="opacity-60 hover:opacity-100 transition-opacity"
-              />
-            </div>
-          ))}
-        </MarqueeScroll>
-
-        <div className="flex flex-col lg:flex-row gap-24">
-          <div className="flex-1">
-            <div className="sticky top-1/2 -translate-y-1/2 max-w-[400px] mt-30">
-              <h2 className="text-5xl font-light mb-8 text-black">
-                Your AI future belongs in your hands. 
-                <img src="/flag.svg" alt="Flag" className="inline-block ml-2 w-[27px] h-[31px]" />
-              </h2>
-            </div>
-          </div>
-          <div className="flex-1 space-y-16">
-            {features.map((feature, index) => (
-              <div key={index} className="border-t border-orange-200 pt-8">
-                <h3 className="text-3xl font-light mb-4 text-black">
-                  {feature.title}
-                </h3>
-                <p className="text-md text-gray-900 flex items-start gap-4">
-                  <Image 
-                    src="/arrow.svg" 
-                    alt="Arrow" 
-                    width={24} 
-                    height={24}
-                    className="flex-shrink-0 mt-1"
-                  />
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="fixed bottom-8 left-1/2 -translate-x-1/2 w-full max-w-2xl px-6">
-          <FadeInSection>
-            <SearchInput />
-          </FadeInSection>
+    <>
+      {/* Sticky Search Input */}
+      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 w-full max-w-2xl px-6 z-40">
+        <div 
+          className="opacity-0 invisible transition-all duration-300 [.past-hero_&]:opacity-100 [.past-hero_&]:visible [.at-cta_&]:opacity-0 [.at-cta_&]:invisible"
+        >
+          <SearchInput />
         </div>
       </div>
-    </div>
+
+      <div className="bg-[#FDF6EC] py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="flex items-center gap-4 w-full bg-[#f8efc0] rounded-lg mb-24">
+            <LogoWithCatFace />
+            <h2 className="text-lg text-black">Le Chat: Your AI assistant for life and work.</h2>
+            <div className="flex gap-4 ml-auto">
+              <a href="https://apps.apple.com/app/le-chat" target="_blank" rel="noopener">
+                <Image
+                  src="/appstore.svg"
+                  alt="Download on App Store"
+                  width={135}
+                  height={40}
+                />
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=ai.mistral.lechat" target="_blank" rel="noopener">
+                <Image
+                  src="/androidstore.svg"
+                  alt="Get it on Google Play"
+                  width={135}
+                  height={40}
+                />
+              </a>
+            </div>
+            <div className="relative hidden md:block">
+              <img src="/catgif.gif" alt="Cat" className="w-24" />
+            </div>
+          </div>
+
+          <MarqueeScroll className="mb-24">
+            {companies.map((company) => (
+              <div key={company.name} className="mx-8">
+                <Image
+                  src={company.logo}
+                  alt={company.name}
+                  width={120}
+                  height={40}
+                  className="opacity-60 hover:opacity-100 transition-opacity"
+                />
+              </div>
+            ))}
+          </MarqueeScroll>
+
+          <div className="flex flex-col lg:flex-row gap-24">
+            <div className="flex-1">
+              <div className="sticky top-1/2 -translate-y-1/2 max-w-[400px] mt-30">
+                <h2 className="text-5xl font-light mb-8 text-black">
+                  Your AI future belongs in your hands. 
+                  <img src="/flag.svg" alt="Flag" className="inline-block ml-2 w-[27px] h-[31px]" />
+                </h2>
+              </div>
+            </div>
+            <div className="flex-1 space-y-16">
+              {features.map((feature, index) => (
+                <div key={index} className="border-t border-orange-200 pt-8">
+                  <h3 className="text-3xl font-light mb-4 text-black">
+                    {feature.title}
+                  </h3>
+                  <p className="text-md text-gray-900 flex items-start gap-4">
+                    <Image 
+                      src="/arrow.svg" 
+                      alt="Arrow" 
+                      width={24} 
+                      height={24}
+                      className="flex-shrink-0 mt-1"
+                    />
+                    {feature.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   )
 }
 
